@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Tool · El próximo capítulo" subtitle="Ejercicio de visión — harmonized" viewport="800x700" -->
+<!-- Tenkai 2026 brand harmonization · auto-aligned to brand book (coral end-stop gradient, local fonts, print-safe) -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>El Próximo Capítulo · Tenkai Consulting</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p:#8b3a8f;--b:#3b35a8;--rose:#d4522a;--teal:#d4522a;--amber:#ba7517;--green:#0f6e56;
+  --grad:linear-gradient(135deg,#3b35a8 0%,#8b3a8f 50%,#d4522a 100%);
+  --grad2:linear-gradient(135deg,#2d2894 0%,#8b3a8f 55%,#d4522a 100%);
+  --a1:linear-gradient(135deg,#d4522a 0%,#a0306e 100%);
+  --a2:linear-gradient(135deg,#8b3a8f 0%,#2d2894 100%);
+  --a3:linear-gradient(135deg,#ba7517 0%,#8b3a8f 100%);
+  --a4:linear-gradient(135deg,#d4522a 0%,#0f6e56 100%);
+  --ink:#1a1a2e;--paper:#f0eff5;--cream:#ece9f4;--border:#e2e0ea;--muted:#6f6b82;
+  --f:'Figtree',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--paper);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@page{size:A4;margin:12mm}
+@media print{
+  .no-print{display:none!important}
+  body{background:#fff}
+  .page{display:none!important}
+  #pgResult.on{display:block!important}
+  .hdr,.tk-footer{display:none!important}
+  -webkit-print-color-adjust:exact;print-color-adjust:exact
+}
+/* HDR */
+.hdr{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;padding:10px 22px;max-width:880px;margin:0 auto}
+.hdr-left{display:flex;align-items:center;gap:10px}
+.hdr-logo{width:40px;height:40px;border-radius:9px;object-fit:cover;box-shadow:0 2px 10px rgba(59,53,168,.18);flex-shrink:0}
+.hdr-brand{font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hdr-sub{font-size:10px;color:var(--muted);letter-spacing:.8px;margin-top:1px}
+.prog-wrap{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--muted);font-weight:600}
+.prog-bar{width:130px;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:var(--grad);border-radius:2px;transition:width .5s}
+/* PAGES */
+.page{display:none}.page.on{display:block}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+.sec{padding:48px 0 64px}.sec-sm{padding:28px 0 48px}
+/* HERO */
+.hero{height:300px;background:var(--grad2);position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.hero-geo{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-arc{position:absolute;border-radius:50%;border:1.5px solid rgba(255,255,255,.07)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,20,.65) 0%,transparent 52%)}
+.hero-txt{position:relative;z-index:2;padding:32px 24px;max-width:880px;margin:0 auto;width:100%}
+.hero-eye{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.hero-thin{display:block;font-size:clamp(17px,2.8vw,24px);font-weight:300;font-style:italic;color:rgba(255,255,255,.72);line-height:1.2;margin-bottom:4px}
+.hero-bold{display:block;font-size:clamp(36px,6vw,60px);font-weight:900;color:#fff;letter-spacing:-2px;line-height:1}
+.hero-sm{height:190px}
+.hero-sm .hero-thin{font-size:clamp(13px,2vw,16px)}
+.hero-sm .hero-bold{font-size:clamp(22px,4vw,36px);letter-spacing:-1px}
+/* ACTO BREAKER */
+.acto-break{border-radius:16px;padding:24px 28px;margin:0 0 26px;position:relative;overflow:hidden;display:flex;align-items:flex-start;gap:18px}
+.acto-break-deco{position:absolute;right:-20px;bottom:-20px;width:120px;height:120px;border-radius:50%;opacity:.1;pointer-events:none}
+.acto-break-num{font-size:64px;font-weight:900;line-height:1;color:rgba(255,255,255,.15);position:absolute;right:24px;top:50%;transform:translateY(-50%);letter-spacing:-4px;pointer-events:none}
+.acto-break-inner{position:relative;z-index:1}
+.acto-kicker{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:5px}
+.acto-title{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.3px;margin-bottom:5px}
+.acto-desc{font-size:13px;color:rgba(255,255,255,.72);line-height:1.65;max-width:480px}
+.acto-icon{font-size:30px;flex-shrink:0;margin-top:2px}
+/* TYPE MARKER */
+.tipo-pill{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px}
+/* BTNS */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;background:var(--grad);color:#fff;font-family:var(--f);font-size:14px;font-weight:700;border:none;border-radius:8px;cursor:pointer;box-shadow:0 4px 18px rgba(59,53,168,.22);transition:all .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 26px rgba(139,58,143,.30)}.btn:active{transform:translateY(0)}
+.btn-ghost{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;background:#fff;color:var(--muted);font-family:var(--f);font-size:13px;font-weight:600;border:1.5px solid var(--border);border-radius:7px;cursor:pointer;transition:all .2s}
+.btn-ghost:hover{border-color:var(--p);color:var(--p)}
+.btn-big{font-size:15px;padding:17px 40px;border-radius:10px;justify-content:center;width:100%;max-width:440px}
+.btn-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:24px}
+/* INPUTS */
+.lbl{display:block;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.txt-in{width:100%;max-width:420px;padding:13px 17px;display:block;margin-bottom:22px;font-family:var(--f);font-size:17px;font-weight:600;color:var(--ink);background:#fff;border:1.5px solid var(--border);border-radius:8px;outline:none;transition:border-color .2s}
+.txt-in:focus{border-color:var(--p)}.txt-in::placeholder{color:#c8c4bf;font-weight:300}
+.txt-area{width:100%;padding:14px 17px;font-family:var(--f);font-size:14px;font-weight:400;color:var(--ink);background:#fff;border:1.5px solid var(--border);border-radius:10px;outline:none;resize:vertical;min-height:100px;line-height:1.75;transition:all .2s;margin-bottom:12px}
+.txt-area:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(59,53,168,.08)}.txt-area::placeholder{color:#c8c4bf}
+.sel-in{padding:11px 40px 11px 14px;font-family:var(--f);font-size:14px;font-weight:600;color:var(--ink);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6560' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;border:1.5px solid var(--border);border-radius:8px;outline:none;appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color .2s}
+.sel-in:focus{border-color:var(--p)}
+/* CARTA NARRATIVA */
+.carta{background:linear-gradient(135deg,rgba(139,58,143,.05),rgba(30,63,168,.03));border:1.5px solid rgba(139,58,143,.14);border-radius:16px;padding:22px 26px;margin-bottom:18px;position:relative;overflow:hidden}
+.carta-stripe{position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:16px 0 0 16px}
+.carta-kicker{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:9px;opacity:.7}
+.carta-body{font-size:15px;line-height:1.85;color:var(--ink);font-weight:400}
+.carta-body strong{font-weight:700}
+/* MOMENTOS TIMELINE (línea de energía) */
+.timeline-row{display:flex;align-items:stretch;gap:0;margin-bottom:22px}
+.timeline-track{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:44px}
+.timeline-node{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;box-shadow:0 3px 10px rgba(0,0,0,.12);cursor:pointer;transition:transform .2s}
+.timeline-node:hover{transform:scale(1.08)}
+.timeline-vline{flex:1;width:2px;background:var(--border);margin:5px 0;border-radius:1px}
+.timeline-card{flex:1;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 18px;margin-left:12px;margin-bottom:14px;transition:box-shadow .2s}
+.timeline-card:hover{box-shadow:0 3px 16px rgba(0,0,0,.07)}
+.timeline-card-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:10px;flex-wrap:wrap}
+.timeline-period{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.timeline-energy{display:flex;gap:5px}
+.energy-dot{width:10px;height:10px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s;flex-shrink:0}
+.energy-dot.on{border-color:var(--ink)}
+/* TERMÓMETRO EMOCIONAL */
+.termo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:520px){.termo-grid{grid-template-columns:1fr 1fr}}
+.termo-item{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:13px 12px;cursor:pointer;transition:all .2s;text-align:center;user-select:none}
+.termo-item:hover{border-color:var(--p)}
+.termo-item.on{border-color:var(--p);background:rgba(107,63,160,.06)}
+.termo-emoji{font-size:22px;display:block;margin-bottom:5px}
+.termo-lbl{font-size:11px;font-weight:700;color:var(--ink)}
+.termo-sub{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4}
+/* SLIDER DUAL */
+.dual-slider-wrap{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.dual-poles{display:flex;justify-content:space-between;margin-bottom:12px;gap:10px}
+.dual-pole{font-size:12px;font-weight:700;color:var(--muted)}
+.dual-slider{width:100%;accent-color:var(--p);margin:4px 0 8px}
+.dual-val{text-align:center;font-size:11px;color:var(--muted);font-style:italic;min-height:16px}
+/* MAPA VOCACIONAL (clusters) */
+.vocmap-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+@media(max-width:560px){.vocmap-grid{grid-template-columns:1fr 1fr}}
+.vocmap-card{background:#fff;border:2px solid var(--border);border-radius:12px;padding:16px 14px;cursor:pointer;transition:all .22s;text-align:center;user-select:none;position:relative}
+.vocmap-card:hover{border-color:var(--p);transform:translateY(-2px)}
+.vocmap-card.on{border-color:var(--p);background:rgba(139,58,143,.05)}
+.vocmap-card.on::after{content:"✓";position:absolute;top:8px;right:10px;font-size:10px;font-weight:800;color:var(--p)}
+.vocmap-icon{font-size:26px;margin-bottom:8px;display:block}
+.vocmap-name{font-size:12px;font-weight:800;color:var(--ink);margin-bottom:3px}
+.vocmap-desc{font-size:10.5px;color:var(--muted);line-height:1.45}
+/* COMPLETAR */
+.stem-box{background:linear-gradient(135deg,rgba(186,117,23,.06),rgba(107,63,160,.04));border:1.5px solid rgba(186,117,23,.2);border-radius:12px;padding:18px 22px;margin-bottom:14px}
+.stem-txt{font-size:16px;font-weight:600;color:var(--ink);line-height:1.65}
+.stem-txt em{font-style:normal;color:var(--amber);font-weight:700}
+/* MIEDO CARDS */
+.miedo-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.miedo-item{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.miedo-txt{font-size:13.5px;color:var(--ink);flex:1;line-height:1.5}
+.miedo-scale{display:flex;gap:5px;flex-shrink:0}
+.mscale-btn{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;transition:all .15s;font-size:11px;font-weight:700;color:var(--muted);display:flex;align-items:center;justify-content:center}
+.mscale-btn.on{background:var(--rose);border-color:var(--rose);color:#fff}
+.miedo-lbrow{display:flex;justify-content:flex-end;gap:5px;padding-right:4px;margin-top:3px}
+.miedo-lbl{font-size:9px;color:var(--muted);width:28px;text-align:center;line-height:1.2}
+/* DILEMA CARDS */
+.dilema2-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px}
+@media(max-width:540px){.dilema2-grid{grid-template-columns:1fr}}
+.dilema2-card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:20px 18px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.dilema2-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:14px 0 0 14px;opacity:0;transition:opacity .2s}
+.dilema2-card:hover{border-color:var(--p);transform:translateY(-2px)}
+.dilema2-card.on{border-color:var(--p);background:rgba(107,63,160,.04)}
+.dilema2-card.on::before{opacity:1;background:var(--p)}
+.dilema2-tag{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;color:var(--p)}
+.dilema2-txt{font-size:14px;line-height:1.75;color:var(--ink)}
+/* RANKING */
+.rank-list{display:flex;flex-direction:column;gap:9px;margin-bottom:10px}
+.rank-item{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:13px 16px;display:flex;align-items:center;gap:12px}
+.rank-pos{width:26px;height:26px;border-radius:50%;background:var(--grad);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rank-txt{font-size:13.5px;color:var(--ink);flex:1;line-height:1.5}
+.rank-arrows{display:flex;flex-direction:column;gap:3px;flex-shrink:0}
+.rank-arr{background:none;border:1px solid var(--border);border-radius:5px;width:24px;height:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;transition:all .15s}
+.rank-arr:hover{border-color:var(--p);color:var(--p)}
+/* RESULTADO */
+.res-cartografia{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:24px;margin-bottom:22px}
+.res-cart-hdr{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.res-cart-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.res-cart-title{font-size:19px;font-weight:800;letter-spacing:-.3px;color:var(--ink);margin-bottom:3px}
+.res-cart-sub{font-size:12px;color:var(--muted)}
+.res-zone{padding:14px 0;border-bottom:1px solid var(--border)}
+.res-zone:last-child{border-bottom:none;padding-bottom:0}
+.res-zone-hdr{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.res-zone-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.res-zone-name{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.res-zone-txt{font-size:13.5px;line-height:1.7;color:var(--ink)}
+/* RADAR */
+.res-radar-wrap{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px;display:flex;justify-content:center}
+/* PASOS NEXT */
+.res-pasos{display:flex;flex-direction:column;gap:11px;margin-bottom:22px}
+.res-paso{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+.res-paso-num{width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.res-paso-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.res-paso-desc{font-size:12.5px;color:var(--muted);line-height:1.6}
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:11px 22px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;transition:transform .35s cubic-bezier(.34,1.56,.64,1);pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+/* FOOTER */
+.tk-footer{background:#fff;border-top:1px solid var(--border);padding:32px 22px 24px;margin-top:52px}
+.tk-footer-in{max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.footer-brand{font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-copy{font-size:11px;color:#bbb8b4}
+.soc-row{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+.soc-a{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);text-decoration:none;padding:5px 10px;border:1px solid var(--border);border-radius:6px;transition:all .2s}
+.soc-a:hover{border-color:var(--p);color:var(--p)}
+.soc-a svg{width:11px;height:11px;flex-shrink:0}
+</style>
+<style id="tk-fonts">
+@font-face { font-family: 'Figtree'; font-style: normal; font-weight: 300 900; font-display: block; src: url('../../fonts/Figtree-Variable.ttf') format('truetype-variations'), url('../../fonts/Figtree-Variable.ttf') format('truetype'); }
+@font-face { font-family: 'Figtree'; font-style: italic; font-weight: 300 900; font-display: block; src: url('../../fonts/Figtree-Italic-Variable.ttf') format('truetype-variations'), url('../../fonts/Figtree-Italic-Variable.ttf') format('truetype'); }
+</style>
+
+
+
+<style id="tk-chrome-2026">
+/* ── Tenkai 2026 unified brand chrome · Z2 spec ───────────────────────── */
+.hdr {
+  background: #ffffff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid #e2e0ea;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 0 rgba(15,15,20,.02);
+}
+.hdr-in {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 22px; margin: 0 auto; min-height: 56px; gap: 16px;
+}
+.hdr-left { display: flex; align-items: center; gap: 12px; }
+.hdr-logo {
+  width: 40px; height: 40px; border-radius: 9px;
+  object-fit: cover; box-shadow: 0 2px 10px rgba(59,53,168,.18);
+  flex-shrink: 0;
+}
+.hdr-brand {
+  font-size: 13px; font-weight: 800; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #3b35a8 0%, #8b3a8f 50%, #d4522a 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  line-height: 1.1;
+}
+.hdr-sub { font-size: 10px; font-weight: 400; color: #888899; letter-spacing: .8px; margin-top: 1px; }
+.prog-wrap { color: #888899; }
+.prog-bar  { background: #e2e0ea; }
+.prog-fill { background: linear-gradient(90deg, #3b35a8 0%, #8b3a8f 50%, #d4522a 100%); }
+
+/* Z2 dark footer — covers .tk-footer and .ftr conventions */
+.tk-footer, .ftr {
+  background: #1a1a2e; border-top: none;
+  padding: 32px 22px 28px; margin-top: 56px;
+  color: rgba(255,255,255,.62); text-align: center;
+}
+.tk-footer-in {
+  margin: 0 auto;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 14px; text-align: center;
+}
+.ftr .ftr-logo, .tk-footer .ftr-logo { display: none; }
+.tk-footer .footer-brand, .footer-brand,
+.ftr .ftr-brand, .ftr-brand {
+  font-size: 13px; font-weight: 800; letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #3b35a8 0%, #8b3a8f 50%, #d4522a 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  margin: 0 0 4px; display: inline-block;
+}
+.tk-footer .footer-copy, .footer-copy,
+.ftr .ftr-copy, .ftr-copy,
+.ftr .ftr-url, .ftr-url {
+  font-size: 11px; color: rgba(255,255,255,.42);
+  letter-spacing: .4px; font-weight: 400;
+}
+.tk-footer .soc-row, .ftr .soc-row, .soc-row {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+  margin: 6px 0 10px;
+}
+.tk-footer .soc-a, .ftr .soc-a, .soc-a {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; color: rgba(255,255,255,.62);
+  text-decoration: none; padding: 6px 12px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 6px;
+  transition: border-color .18s, color .18s, transform .18s;
+  background: transparent;
+}
+.tk-footer .soc-a:hover, .ftr .soc-a:hover, .soc-a:hover {
+  border-color: rgba(255,255,255,.4); color: #fff;
+  transform: translateY(-1px);
+}
+.tk-footer .soc-a svg, .ftr .soc-a svg, .soc-a svg {
+  width: 12px; height: 12px; flex-shrink: 0;
+}
+
+@media print {
+  .tk-footer, .ftr {
+    background: #ffffff; color: #888899;
+    border-top: 1px solid #e2e0ea;
+  }
+  .tk-footer .footer-copy, .footer-copy,
+  .ftr .ftr-copy, .ftr-copy,
+  .ftr .ftr-url, .ftr-url { color: #888899; }
+  .tk-footer .soc-a, .ftr .soc-a, .soc-a {
+    color: #888899; border-color: #e2e0ea; background: #fff;
+  }
+}
+</style>
+
+
+
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr no-print">
+  <div class="hdr-in">
+    <div class="hdr-left">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAB4AHgDASIAAhEBAxEB/8QAHAAAAwADAQEBAAAAAAAAAAAAAAECAwQFBgcI/8QAQBAAAQMDAgIHBQMICwAAAAAAAQACAwQFEQYhEjEHIkFRYYGRExQjcaEVMkIXM0NVYpSx0hZEUlNjcnSSorLR/8QAGwEBAQADAQEBAAAAAAAAAAAABAMCBQYBBwD/xAAnEQADAAICAQIFBQAAAAAAAAAAAQIDERIhUQRBEzFxgaEiMmGx8P/aAAwDAQACEQMRAD8A8khCFtRQklSSoibEpKopKskaJSVKSryQoRSTSV5D0JJNCqiFCSTQqIkxIQhenmzcQnhC5xM6dolJVhJZpk6QipVJK0sjRJSKoqSkSHoSkqkleQ1CSTQrIhTEkn2Lp2/T10uUD6mClLaSMZkqpiI4WDvL3bemVk6UrbZLt9I5aFkmjZHM5kcrRW8bjaCA75Z3whZmOzawjCrCXLcrl1R1jROEiuvbdM3q74NDbaiVh/ScPCz/AHHAXqqLojvc4DquqpKUHm3JkcPTA+qy+JK+bI00j56VOF9bZ0Mw8PxL5KXfs04A+rlzbh0P18M0PuVfHUwuka2TiZ7N7Gk7uG5BwFSfUY/JCuzQ0/0X119stPcvtCKmbOC5kb4i48OcA8xzxldL8jFb+uqf93d/MvrlPBFSUsVPC0MiiYGMb3NAwF5y99IOnrHxMlrRUTt/Q03XIPieQ8yoT6nPVaj+ibmfc8L+Ret/XVP+7u/mWrX9FItdOaiv1LQ00Q/LEWW5+XW3XafqzWmqWkWC1C3UR/rc/d38Thj0BXN/o5pqmqPe9YaubcKvm6KKYu8sjLvTCVGXMv319ktsjSn2R4KqtlOa5tJaKuW6yE4+DSubn5Akk+gXq7J0TX248Mle6O3QHfD+vJj/ACjYeZXpI+kjSWn4DT2K0SuA/u4hEHfNx6x8wuNX9Md4nDm0NBSUrTyc8mVw/gPok/E9Xa1jnX8vW/8AfYO1hnunv6HoKmwaJ6PqNtVcIjXVpGYmTkPfIf2WfdA8SNu9fNtT6vuWqKge8uENHGfg0kR6jO4nvPj6YXJrq6rudZJV1tQ+eokOXSPOSf8AweC1krB6bg+eR8q8+PoGy5+X6ZWkJCeEJgfZ0Y/Zh4MoeWdoYQCfMrrU1/Fuwbda6CCQcppozPJ6v2HkAuThLC4/ls7Nzs7VRrLUlSSX3qrHhG4MH/EBazNTX+N3E29XAH/UOP8AErmkJEKs6I1KPo2jukm5falNbrw8VUE7xE2YtAfG4nAzjYjPmvrznBrS5xAAGST2L88aKtzrnrG2wgZbHKJ3+DWdb+IA819d6Qr4LLpSoDH4qasGnhHb1h1j5DP0U8kJ2lPuGtaZ8dvusL3fZJG1Nwk92LjwwxdRnDnbIHPbvyuRSV81AQ6mbCyQcpTE1zh8uLIHkF0tMSsbfqKlkpqWaConjjkbUQNkw3ONieXPsWKjmFy1Jb/eKembG6pijfHFC2NhbxjOQNuRW0jS610Gs0q26XG4u4q6uqak/wCLK5w9CcLTAwNtvkvW6opJqemdw290UHtiDI60MpeHc8IDwSTnyypgobfXWyy0XsoYLhNG6WKcnAnd7ZzTFJ8wBwnv2Ox2RGRKU9dBblt6PJowvTR0dC7VV9gmY2OlijrCzhjDvZ8OeEtbkbjs3C0tQ08FNDRigjY6hdAXRVWOvO/8Zf8A2XB23B2DHPOSiMibSC2mk2cbCML6C+C1fa0ltD7ZwCmdim+zviZEHF+e7875yvI00MTtMV07mNMzamna15G4BbJkDwOB6BZRmVLevH5I5I4v5+fwczCFWEK+yHI38IwqwjC4lWd80YyEsLIQujYLLNf71T2+HIEjsyPH4GD7x9PqQrTRC1o+jdFNjFHbai91ADXVHw4i7bEbTufM/wDVeG11qQ6kv75InE0VPmKnHeO1/mfoAvZ9Imo4bTbI9MWoiM+zDJuA/m4sbM+ZHPw+a+UEK+HuuTBvvsI3sYx4fEHkkYJOMYO/qspqabjz7jHj2nFjjP3cY4fXda5CkhbCAmQy+3hAZmmBLQ3OXkhxB3yPEJNnhDCH0jHnLTxcRGMHJ28RssJCWEuNAcjKlc18z3sZwNcSQ0HOB3KMJ4TASJBXQsJ4TAVALLYaqIwhXhC92T5G9hLCvCMLhFR9LaMZC+jWt8WgNJm4Tsab1cm/AidzYzsz4DOT4kBeZ07R0sb5LzdG5t9E4Yj7aibm2Md/efD5rnXq71d9uctfWOzI/YNHJjexo8ArwwmRcnr2NComlqqiSeeR0ksji973HdxPMlYCFlIUEJmOg2RGMhSQshCghPxs1+UghLCvCWEyGa/KycJgKgFQCuma/JQgFQaqDVQav3IJVEcKFk4ULzkS5myrijEkgaXhjfxPPJo7SpQuFTPq7Rs3CvNUIYImmOjp2lsER7M83O73OO5PlyC0SFZUlIhh6WkYyFJVlSQm42BymMhSQshCkhOxs12UjCMKsIwmQzWZWIBUAmArAVuRrcrANVhqAFkAXjoFdE8KFlDULHkR5AkUIXFo+wMlSUISID2SVBQhNxgcpJSQhPxmsyiTCEJcmsylBWAhCqazKZGhZGhCFgwFlgIQhYED/9k=" alt="Tenkai" class="hdr-logo">
+      <div><div class="hdr-brand">Tenkai</div><div class="hdr-sub">Consulting</div></div>
+    </div>
+    <div class="prog-wrap">
+      <span id="progTxt">El Próximo Capítulo</span>
+      <div class="prog-bar" id="progBarWrap" style="display:none"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════ INTRO ═══════════════════════════════════════════ -->
+<div id="pgIntro" class="page on">
+  <div class="hero">
+    <div class="hero-geo">
+      <div class="hero-arc" style="width:500px;height:500px;top:-180px;right:-110px"></div>
+      <div class="hero-arc" style="width:240px;height:240px;bottom:-80px;left:60px"></div>
+      <div class="hero-arc" style="width:140px;height:140px;top:30px;left:35%"></div>
+    </div>
+    <div class="hero-txt">
+      <p class="hero-eye">Diagnóstico de Carrera · Tenkai Consulting · Savickas · Holland</p>
+      <span class="hero-thin">Descubrí qué viene después</span>
+      <span class="hero-bold">El Próximo Capítulo</span>
+    </div>
+  </div>
+  <div class="wrap"><div class="sec">
+    <p style="font-size:15px;line-height:1.9;color:var(--ink);opacity:.82;max-width:620px;margin-bottom:16px">Reorientarse no es empezar de cero. Es <strong>releer tu historia con otros ojos</strong> — encontrar los hilos que siempre estuvieron ahí y entender hacia dónde te llevan.</p>
+    <p style="font-size:15px;line-height:1.9;color:var(--ink);opacity:.82;max-width:620px;margin-bottom:16px">Este diagnóstico está diseñado para personas <strong>adultas con trayectoria</strong> — no para quien recién empieza. Parte de la premisa de que ya tenés experiencia, logros y también decepciones. Todo eso es material valioso.</p>
+    <p style="font-size:15px;line-height:1.9;color:var(--ink);opacity:.82;max-width:620px;margin-bottom:24px">Vas a recorrer <strong>4 actos</strong>: tu historia, tu estado actual, tu deseo real, y el camino posible. Al final, obtenés una <em>Cartografía de Transición</em> — no un perfil de personalidad, sino un mapa para el próximo movimiento.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px">
+      <span style="padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;background:rgba(139,58,143,.10);color:var(--p);border:1.5px solid rgba(139,58,143,.18)">📖 4 Actos</span>
+      <span style="padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;background:rgba(59,53,168,.08);color:var(--b);border:1.5px solid rgba(59,53,168,.18)">⚡ 28 dinámicas</span>
+      <span style="padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;background:rgba(17,168,196,.08);color:var(--teal);border:1.5px solid rgba(17,168,196,.18)">⏱ 30–40 min</span>
+      <span style="padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;background:rgba(186,117,23,.08);color:var(--amber);border:1.5px solid rgba(186,117,23,.18)">🎯 Para adultos en transición</span>
+    </div>
+    <span class="lbl">Tu nombre</span>
+    <input class="txt-in" type="text" id="nameInput" placeholder="Nombre y apellido" autocomplete="off">
+    <div class="btn-row">
+      <button class="btn" onclick="startTest()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Comenzar mi diagnóstico
+      </button>
+    </div>
+  </div></div>
+  <!-- ====== FOOTER · Tenkai · pieza interna ====== -->
+<footer class="tk-footer" data-comment-anchor="footer">
+  <div class="tk-footer-in">
+    <div class="footer-brand">Tenkai Consulting</div>
+    <div class="soc-row">
+      <a class="soc-a" href="https://www.tenkai.com.ar" target="_blank" rel="noopener">tenkai.com.ar</a>
+      <a class="soc-a" href="/cdn-cgi/l/email-protection#1f7a6c6b7a7d7e715f6b7a71747e76317c7072317e6d"><span class="__cf_email__" data-cfemail="543127203136353a1420313a3f353d7a373b397a3526">[email&#160;protected]</span></a>
+      <a class="soc-a" href="https://www.linkedin.com/in/estebantoledo/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="soc-a" href="https://www.instagram.com/tenkai.consulting/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="footer-copy">Diseño de Carrera Profesional · © 2026</div>
+  </div>
+</footer>
+<!-- ====== / FOOTER ====== --></div>
+</div>
+
+<!-- ════════ ENGINE ══════════════════════════════════════════ -->
+<div id="pgTest" class="page">
+  <div class="hero hero-sm" id="testHero">
+    <div class="hero-geo"><div class="hero-arc" style="width:280px;height:280px;top:-100px;right:-60px"></div></div>
+    <div class="hero-txt">
+      <p class="hero-eye" id="testEye">Acto 1 · Momento 1 de 18</p>
+      <span class="hero-thin" id="testThin">La Historia</span>
+      <span class="hero-bold" id="testBold">…</span>
+    </div>
+  </div>
+  <div class="wrap"><div class="sec-sm">
+    <div id="actoBreaker" style="display:none"></div>
+    <div id="tipoPill"></div>
+    <div id="stepContent"></div>
+    <div class="btn-row">
+      <button class="btn-ghost" id="btnPrev" onclick="prevStep()" style="display:none">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Atrás
+      </button>
+      <button class="btn" id="btnNext" onclick="nextStep()">Continuar
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div></div>
+  <!-- ====== FOOTER · Tenkai · pieza interna ====== -->
+<footer class="tk-footer" data-comment-anchor="footer">
+  <div class="tk-footer-in">
+    <div class="footer-brand">Tenkai Consulting</div>
+    <div class="soc-row">
+      <a class="soc-a" href="https://www.tenkai.com.ar" target="_blank" rel="noopener">tenkai.com.ar</a>
+      <a class="soc-a" href="/cdn-cgi/l/email-protection#f49187809196959ab480919a9f959dda979b99da9586"><span class="__cf_email__" data-cfemail="9ffaecebfafdfef1dfebfaf1f4fef6b1fcf0f2b1feed">[email&#160;protected]</span></a>
+      <a class="soc-a" href="https://www.linkedin.com/in/estebantoledo/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="soc-a" href="https://www.instagram.com/tenkai.consulting/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="footer-copy">Diseño de Carrera Profesional · © 2026</div>
+  </div>
+</footer>
+<!-- ====== / FOOTER ====== --></div>
+</div>
+
+<!-- ════════ RESULTADO ══════════════════════════════════════ -->
+<div id="pgResult" class="page">
+  <div class="hero hero-sm" style="background:var(--grad)">
+    <div class="hero-txt">
+      <p class="hero-eye">Tu Cartografía de Transición</p>
+      <span class="hero-thin">Diagnóstico vocacional de</span>
+      <span class="hero-bold" id="resHeroName">…</span>
+    </div>
+  </div>
+  <div class="wrap"><div class="sec-sm">
+    <div style="background:linear-gradient(135deg,rgba(139,58,143,.07),rgba(30,63,168,.04));border:2px solid rgba(139,58,143,.16);border-radius:16px;padding:26px 30px;margin-bottom:24px;text-align:center">
+      <div style="font-size:26px;margin-bottom:10px">✦</div>
+      <h3 id="resCloseTitle" style="font-size:21px;font-weight:800;letter-spacing:-.4px;color:var(--ink);margin-bottom:9px">Tu Cartografía está lista</h3>
+      <p style="font-size:14px;line-height:1.9;color:var(--muted);max-width:500px;margin:0 auto">Este mapa revela dónde estás, qué te pide el cuerpo y hacia dónde apunta tu energía real. Es el insumo perfecto para tu próxima sesión con <strong style="color:var(--ink)">Esteban</strong>.</p>
+    </div>
+    <p class="lbl">Lo que este diagnóstico detectó</p>
+    <div id="resCartografia"></div>
+    <p class="lbl">Próximos pasos recomendados</p>
+    <div class="res-pasos" id="resPasos"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:13px;margin-top:4px">
+      <button class="btn btn-big" onclick="window.print()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar mi Cartografía (PDF)
+      </button>
+      <div style="display:flex;gap:11px;flex-wrap:wrap;justify-content:center">
+        <button class="btn-ghost" onclick="sendEmail()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Enviar a Esteban
+        </button>
+        <button class="btn-ghost" onclick="restartTest()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+          Volver a empezar
+        </button>
+      </div>
+    </div>
+  </div></div>
+  <!-- ====== FOOTER · Tenkai · pieza interna ====== -->
+<footer class="tk-footer" data-comment-anchor="footer">
+  <div class="tk-footer-in">
+    <div class="footer-brand">Tenkai Consulting</div>
+    <div class="soc-row">
+      <a class="soc-a" href="https://www.tenkai.com.ar" target="_blank" rel="noopener">tenkai.com.ar</a>
+      <a class="soc-a" href="/cdn-cgi/l/email-protection#f89d8b8c9d9a9996b88c9d96939991d69b9795d6998a"><span class="__cf_email__" data-cfemail="3d584e49585f5c537d495853565c54135e5250135c4f">[email&#160;protected]</span></a>
+      <a class="soc-a" href="https://www.linkedin.com/in/estebantoledo/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="soc-a" href="https://www.instagram.com/tenkai.consulting/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="footer-copy">Diseño de Carrera Profesional · © 2026</div>
+  </div>
+</footer>
+<!-- ====== / FOOTER ====== --></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── SOCIALS ──────────────────────────────────────────────────────────
+const SOC=`<a href="https://www.facebook.com/tenkai.esteban" target="_blank" class="soc-a"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a><a href="https://www.linkedin.com/in/toledoesteban/" target="_blank" class="soc-a"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.27V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a><a href="https://www.instagram.com/esteban.tenkai/" target="_blank" class="soc-a"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a><a href="https://www.tiktok.com/@esteban.tenkai" target="_blank" class="soc-a"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>TikTok</a><a href="https://www.tenkai.com.ar" target="_blank" class="soc-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Web</a><a href="https://www.google.com/maps/place/Tenkai" target="_blank" class="soc-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Maps</a>`;
+['soc0','soc1','soc2'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=SOC;});
+
+// ── PERFILES VOCACIONALES (Holland RIASEC adaptado) ──────────────────
+const PERFILES=[
+  {id:'R',name:'Artesano/a·Técnico/a', color:'#ba7517',light:'#faeeda',icon:'⚙️',
+   desc:'Hacés con las manos, los datos o las herramientas. Necesitás ver resultados concretos de tu trabajo.'},
+  {id:'I',name:'Investigador/a·Analítico/a', color:'#185fa5',light:'#e7ebf9',icon:'🔬',
+   desc:'Pensás, analizás, resolvés problemas complejos. El "por qué" te mueve más que el "qué".'},
+  {id:'A',name:'Creativo/a·Expresivo/a', color:'#a0306e',light:'#fbeaf0',icon:'🎨',
+   desc:'Necesitás crear, inventar, comunicar. La rutina te apaga y la originalidad te enciende.'},
+  {id:'S',name:'Acompañante·Social', color:'#0f6e56',light:'#e1f5ee',icon:'🤝',
+   desc:'Tu trabajo cobra sentido cuando impacta directamente en las personas que te rodean.'},
+  {id:'E',name:'Emprendedor/a·Líder', color:'#8b3a8f',light:'#f1ecf8',icon:'🚀',
+   desc:'Querés influir, construir, dirigir. La autonomía y el impacto son tu combustible.'},
+  {id:'C',name:'Organizador/a·Estructurado/a', color:'#3b35a8',light:'#e7ebf9',icon:'📋',
+   desc:'Sos preciso/a, ordenado/a, confiable. Construís sistemas que otros pueden usar.'}
+];
+
+// ── ACTOS ─────────────────────────────────────────────────────────────
+const ACTOS=[
+  {num:'01',label:'La Historia',desc:'Tu trayectoria como materia prima. Vamos a releer lo que ya viviste.',icon:'📖',grad:'var(--a1)'},
+  {num:'02',label:'La Señal',desc:'Lo que tu cuerpo y tus emociones están diciendo hoy.',icon:'🔦',grad:'var(--a2)'},
+  {num:'03',label:'El Deseo Real',desc:'Separar lo que "deberías querer" de lo que en verdad querés.',icon:'🧭',grad:'var(--a3)'},
+  {num:'04',label:'El Camino Posible',desc:'Qué tan lejos está el nuevo destino y cómo se llega.',icon:'🗺️',grad:'var(--a4)'}
+];
+
+// ── PASOS (28 dinámicas, 7 por acto) ──────────────────────────────────
+// ÍNDICES CLAVE PARA EL MOTOR DE TENSIONES (renderResult):
+// paso 1=TL energía | 4=VM pasado | 5=DS coherencia | 6=CO precio pagado
+// paso 7=EM emociones | 9=DS agotamiento | 10=MI miedos | 12=DL diagnóstico | 13=RK retención
+// paso 15=VM futuro | 16=DS distancia | 17=RK no negociables | 19=MI urgencia
+// paso 21=DL tipo movimiento | 23=MI recursos | 24=DS velocidad | 26=RK primer paso
+const STEPS=[
+
+  // ══ ACTO 1: LA HISTORIA (0–6) ════════════════════
+  {acto:0,tipo:'NR',heroBold:'El punto de partida',heroThin:'Tu historia',
+   tipoBg:'#d4522a',tipoLabel:'Narrativa',
+   carta:{color:'#d4522a',kicker:'Antes de mirar adelante, miremos lo que ya fue',
+    body:'No para quedarte ahí, sino para entender los hilos que te trajeron hasta acá. Respondé sin currículum, sin formato, sin lo que "debería" decirse.'},
+   prompt:'¿Cómo llegaste a donde estás hoy laboralmente?',
+   ph:'Contalo como una historia. El comienzo, los giros, lo que no elegiste del todo, lo que sí.'},
+
+  {acto:0,tipo:'TL',heroBold:'La línea de energía',heroThin:'Tu historia',
+   tipoBg:'#d4522a',tipoLabel:'Línea de tiempo',
+   carta:{color:'#d4522a',kicker:'Tus tramos de vida laboral',
+    body:'Para cada etapa, indicá cuánta energía genuina te daba ese trabajo. No el sueldo ni el prestigio — la energía real que sentías al levantarte.'},
+   periodos:['Primer trabajo o experiencia','Hace 5–10 años','Hace 2–4 años','El último año','Hoy'],
+   energyColors:['#ba7517','#8b3a8f','#3b35a8','#d4522a','#d4522a']},
+
+  {acto:0,tipo:'CO',heroBold:'El momento más vivo',heroThin:'Tu historia',
+   tipoBg:'#a0306e',tipoLabel:'Completar',
+   stem:{pre:'El momento de mi carrera en que me sentí más ',em:'vivo/a y genuino/a',post:' fue cuando…'},
+   ph:'Describilo con detalle. ¿Qué hacías? ¿Con quién? ¿Qué producías? ¿Qué lo hacía diferente?'},
+
+  {acto:0,tipo:'NR',heroBold:'El orgullo real',heroThin:'Tu historia',
+   tipoBg:'#a0306e',tipoLabel:'Narrativa',
+   carta:{color:'#a0306e',kicker:'No el logro del CV — el que recordás vos',
+    body:'No el ascenso que suena bien. El que cuando lo recordás internamente, sentís que valió la pena.'},
+   prompt:'¿Cuál es el logro profesional del que más orgulloso/a estás — y por qué?',
+   ph:'No tiene que ser grande. Tiene que ser tuyo.'},
+
+  {acto:0,tipo:'VM',heroBold:'¿A qué te parecías?',heroThin:'Tu historia',
+   tipoBg:'#8b3a8f',tipoLabel:'Mapa vocacional',
+   pregunta:'Pensando en los mejores momentos de tu trayectoria — cuando más efectivo/a y satisfecho/a te sentiste — ¿a cuál de estos perfiles vocacionales te parecías más? Elegí hasta 2.'},
+
+  {acto:0,tipo:'DS',heroBold:'¿Cuánto fuiste vos?',heroThin:'Tu historia',
+   tipoBg:'#3b35a8',tipoLabel:'Reflexión visual',
+   pregunta:'Mirando tu carrera como un todo, ¿cuánto sentís que estuviste siendo genuinamente vos mismo/a?',
+   poleA:'Me fui perdiendo — hice lo que se esperaba, no lo que quería',
+   poleB:'Mantuve coherencia con lo que soy y lo que valoro'},
+
+  {acto:0,tipo:'CO',heroBold:'El precio pagado',heroThin:'Tu historia',
+   tipoBg:'#3b35a8',tipoLabel:'Completar',
+   stem:{pre:'Para llegar a donde estoy, lo que tuve que dejar de lado o sacrificar fue…',em:'',post:''},
+   ph:'Puede ser tiempo, relaciones, una vocación, una versión de vos. Sin filtros.'},
+
+  // ══ ACTO 2: LA SEÑAL (7–13) ══════════════════════
+  {acto:1,tipo:'EM',heroBold:'El lunes de verdad',heroThin:'La señal',
+   tipoBg:'#8b3a8f',tipoLabel:'Termómetro emocional',
+   pregunta:'¿Cuál de estas emociones describe mejor cómo te levantás la mayoría de los lunes? Elegí hasta 2.',
+   emos:[
+     {emoji:'😶',lbl:'Anestesiado/a',sub:'Ya no sentís casi nada'},
+     {emoji:'😤',lbl:'Frustrado/a',sub:'Algo no cierra y lo sabés'},
+     {emoji:'😰',lbl:'Ansioso/a',sub:'Todo parece urgente'},
+     {emoji:'😴',lbl:'Agotado/a',sub:'Sin reserva de energía'},
+     {emoji:'🔥',lbl:'Motivado/a',sub:'Con ganas genuinas'},
+     {emoji:'😐',lbl:'Neutral',sub:'Ni bien ni mal, simplemente vas'},
+     {emoji:'🤔',lbl:'Confundido/a',sub:'No sabés bien qué querés'},
+     {emoji:'💪',lbl:'Desafiado/a',sub:'Es difícil pero lo elegís'},
+     {emoji:'🌱',lbl:'Expectante',sub:'Algo está por cambiar'}
+   ]},
+
+  {acto:1,tipo:'NR',heroBold:'Lo que el cuerpo dice',heroThin:'La señal',
+   tipoBg:'#8b3a8f',tipoLabel:'Narrativa',
+   carta:{color:'#8b3a8f',kicker:'El cuerpo registra lo que la mente racionaliza',
+    body:'Antes de cualquier decisión consciente, el cuerpo ya tiene una opinión. Dolores que aparecen, energía que se va, tensión en ciertos momentos.'},
+   prompt:'¿Qué señales físicas o emocionales notás en relación a tu trabajo? ¿En qué situaciones aparecen?',
+   ph:'Puede ser antes de una reunión, al pensar en el domingo, con ciertas personas o temas.'},
+
+  {acto:1,tipo:'DS',heroBold:'Tu nivel de reserva',heroThin:'La señal',
+   tipoBg:'#d4522a',tipoLabel:'Reflexión visual',
+   pregunta:'Si tuvieras que describir tu nivel de energía laboral hoy, ¿dónde estás?',
+   poleA:'Completamente vaciado/a — sin reserva para nada',
+   poleB:'Con energía plena — en un muy buen momento'},
+
+  {acto:1,tipo:'MI',heroBold:'Tus frenos reales',heroThin:'La señal',
+   pregunta:'¿Cuánto peso tiene cada uno de estos miedos en tu decisión de no cambiar? Puntuá de 1 (casi nada) a 3 (mucho peso).',
+   tipoBg:'#3b35a8',tipoLabel:'Mapa de miedos',
+   miedos:[
+     'Perder ingresos o estabilidad económica',
+     'No saber qué haría en otro lugar o contexto',
+     'Lo que dirán las personas cercanas',
+     'Que ya sea tarde para empezar algo nuevo',
+     'No tener las habilidades necesarias',
+     'Defraudar expectativas que otros tienen de mí',
+     'Que el cambio no funcione y haber dejado todo',
+     'Perder lo construido — reconocimiento, red, posición'
+   ]},
+
+  {acto:1,tipo:'CO',heroBold:'Lo que no decís',heroThin:'La señal',
+   tipoBg:'#a0306e',tipoLabel:'Completar',
+   stem:{pre:'Lo que llevo tiempo pensando pero no me animo a decirle a nadie es que…',em:'',post:''},
+   ph:'Nadie más va a leer esto. Escribí lo que realmente estás pensando.'},
+
+  {acto:1,tipo:'DL',heroBold:'Tu situación actual',heroThin:'La señal',
+   tipoBg:'#3b35a8',tipoLabel:'Dilema',
+   pregunta:'¿Cuál de estas frases suena más verdadera a lo que estás viviendo?',
+   opcA:'El trabajo me da estabilidad pero ya no me da vida.',
+   opcB:'El trabajo me desafía pero el costo personal es demasiado alto.',
+   opteC:'Siento que lo que hago ya no tiene sentido para mí.',
+   opcD:'Sé que tengo que cambiar pero no sé hacia dónde.'},
+
+  {acto:1,tipo:'RK',heroBold:'Lo que te retiene',heroThin:'La señal',tipoBg:'#3b35a8',tipoLabel:'Clasificación',
+   instruccion:'¿Qué es lo que más te retiene en tu situación actual? Ordená de mayor a menor peso en tu decisión de no moverse.',
+   items:[
+     {txt:'La seguridad económica y el sueldo que tengo.'},
+     {txt:'El miedo a lo desconocido — no sé qué hay del otro lado.'},
+     {txt:'Las personas que dependen de mí (familia, equipo).'},
+     {txt:'El tiempo y esfuerzo que ya invertí en llegar acá.'},
+     {txt:'La comodidad — cambiar requiere energía que no tengo.'},
+     {txt:'La identidad — no sé quién sería sin este trabajo.'}
+   ]},
+
+  // ══ ACTO 3: EL DESEO REAL (14–20) ═══════════════
+  {acto:2,tipo:'NR',heroBold:'La vida que imaginás',heroThin:'El deseo real',
+   tipoBg:'#ba7517',tipoLabel:'Narrativa libre',
+   carta:{color:'#ba7517',kicker:'Sin limitaciones económicas ni presión social',
+    body:'Si no hubiera restricciones de dinero ni de lo que "se espera" de vos, ¿cómo sería tu vida laboral ideal?'},
+   prompt:'Describí un día laboral ideal dentro de 3 años. ¿Dónde estás? ¿Qué hacés? ¿Con quién? ¿Para qué?',
+   ph:'Cuanto más concreto y sensorial, mejor. No lo que "suena bien" — lo que en verdad te gustaría.'},
+
+  {acto:2,tipo:'VM',heroBold:'Tu destino vocacional',heroThin:'El deseo real',
+   tipoBg:'#ba7517',tipoLabel:'Mapa vocacional',
+   pregunta:'Mirando hacia adelante — lo que querés construir — ¿cuál de estos perfiles vocacionales te gustaría encarnar? Elegí hasta 2.'},
+
+  {acto:2,tipo:'DS',heroBold:'La distancia real',heroThin:'El deseo real',
+   tipoBg:'#a0306e',tipoLabel:'Reflexión visual',
+   pregunta:'¿Qué tan lejos sentís que está hoy tu trabajo real de lo que imaginás como trabajo ideal?',
+   poleA:'Muy lejos — lo que imagino es completamente distinto a lo que tengo',
+   poleB:'Muy cerca — con pequeños ajustes estaría donde quiero'},
+
+  {acto:2,tipo:'RK',heroBold:'Lo que no negociás',heroThin:'El deseo real',tipoBg:'#8b3a8f',tipoLabel:'Clasificación',
+   instruccion:'Ordená estas dimensiones de mayor a menor importancia para vos en un trabajo ideal. Sin "debería" — lo que genuinamente necesitás.',
+   items:[
+     {txt:'Autonomía real — elegir proyectos, horarios y forma de trabajar.'},
+     {txt:'Impacto humano visible — ver cómo mi trabajo cambia la vida de personas.'},
+     {txt:'Crecimiento continuo — siempre aprender y evolucionar.'},
+     {txt:'Estabilidad y continuidad — saber que estaré bien el mes que viene.'},
+     {txt:'Reconocimiento — que mi contribución sea visible y valorada.'},
+     {txt:'Creación genuina — producir algo con mi sello que sea nuevo.'}
+   ]},
+
+  {acto:2,tipo:'CO',heroBold:'El trabajo soñado',heroThin:'El deseo real',
+   tipoBg:'#8b3a8f',tipoLabel:'Completar',
+   stem:{pre:'Si alguien me ofreciera mañana el trabajo perfecto para mí, sería un trabajo donde…',em:'',post:''},
+   ph:'Sé lo más específico/a que puedas. Industria, tipo de rol, con quién, para qué.'},
+
+  {acto:2,tipo:'MI',heroBold:'Lo que ya no aguantás',heroThin:'El deseo real',
+   pregunta:'¿Con cuánta intensidad estás experimentando cada una de estas señales? Puntuá de 1 (casi nada) a 3 (muy intenso).',
+   tipoBg:'#ba7517',tipoLabel:'Señales internas',
+   miedos:[
+     'Siento que el tiempo pasa y no me estoy moviendo',
+     'Me comparo con personas que cambiaron y les fue bien',
+     'Fantaseo frecuentemente con hacer algo completamente diferente',
+     'Me cuesta encontrar sentido en lo que hago cotidianamente',
+     'Hay una versión de mí que siento que nunca le di espacio',
+     'Tengo una idea de algo nuevo pero no me animé a explorarla',
+     'Siento que mi mejor trabajo todavía no lo hice'
+   ]},
+
+  {acto:2,tipo:'NR',heroBold:'El consejo que no te das',heroThin:'El deseo real',
+   tipoBg:'#a0306e',tipoLabel:'Narrativa',
+   carta:{color:'#a0306e',kicker:'Lo que ves en otros pero no en vos',
+    body:'A veces somos más lúcidos dando consejos a otros que tomando decisiones propias.'},
+   prompt:'Si un amigo/a muy cercano/a te describiera exactamente tu situación y te pidiera consejo, ¿qué le dirías?',
+   ph:'No lo que le dirías para que se sienta bien. Lo que le dirías si quisieras ayudarlo de verdad.'},
+
+  // ══ ACTO 4: EL CAMINO POSIBLE (21–27) ═══════════
+  {acto:3,tipo:'DL',heroBold:'El tipo de movimiento',heroThin:'El camino posible',
+   tipoBg:'#d4522a',tipoLabel:'Dilema',
+   pregunta:'¿Cuál de estas descripciones se acerca más a lo que sentís que necesitás hacer?',
+   opcA:'Un giro dentro de mi campo actual — mismo sector, diferente rol o enfoque.',
+   opcB:'Un salto a un sector o disciplina completamente nueva.',
+   opteC:'Mantener el trabajo actual y construir algo paralelo mientras.',
+   opcD:'Un corte claro — empezar algo propio o radicalmente diferente.'},
+
+  {acto:3,tipo:'CO',heroBold:'Tu capital genuino',heroThin:'El camino posible',
+   tipoBg:'#0f6e56',tipoLabel:'Completar',
+   stem:{pre:'Si tuviera que elegir las ',em:'3 cosas que mejor sé hacer',post:' y que además me dan satisfacción genuina, serían…'},
+   ph:'No lo que "deberías" saber. Lo que genuinamente dominás y disfrutás hacer.'},
+
+  {acto:3,tipo:'MI',heroBold:'Tus recursos reales',heroThin:'El camino posible',
+   pregunta:'¿Qué disponibilidad tiene cada recurso en tu realidad hoy? Puntuá de 1 (poco) a 3 (disponible).',
+   tipoBg:'#0f6e56',tipoLabel:'Mapa de recursos',
+   miedos:[
+     'Colchón financiero para sostener una transición (3–6 meses)',
+     'Red de contactos que puede abrirme puertas en lo que quiero',
+     'Formación o habilidades transferibles a otros contextos',
+     'Apoyo emocional de personas cercanas para el cambio',
+     'Claridad sobre la dirección — sé hacia dónde quiero ir',
+     'Energía y disposición genuina para hacer el movimiento',
+     'Tiempo disponible para explorar y formarse'
+   ]},
+
+  {acto:3,tipo:'DS',heroBold:'Tu urgencia interna',heroThin:'El camino posible',
+   tipoBg:'#d4522a',tipoLabel:'Reflexión visual',
+   pregunta:'¿Cómo sentís la urgencia de hacer este cambio?',
+   poleA:'Urgente — si no lo hago ahora, la ventana se cierra',
+   poleB:'Puedo tomármelo con calma — hay tiempo para hacerlo bien'},
+
+  {acto:3,tipo:'NR',heroBold:'Tu hipótesis',heroThin:'El camino posible',
+   tipoBg:'#0f6e56',tipoLabel:'Narrativa',
+   carta:{color:'#0f6e56',kicker:'Una hipótesis no es una certeza — es algo a testear',
+    body:'No te estamos pidiendo que decidas. Te estamos pidiendo que articulés lo que ya estás pensando aunque sea en borrador.'},
+   prompt:'Si tuvieras que apostar a dónde vas a estar en 2 años laboralmente, ¿cuál sería tu mejor hipótesis hoy?',
+   ph:'No tiene que ser preciso. Tiene que ser honesto.'},
+
+  {acto:3,tipo:'RK',heroBold:'Tu primer paso real',heroThin:'El camino posible',tipoBg:'#d4522a',tipoLabel:'Clasificación',
+   instruccion:'¿Cuál de estos primeros movimientos te parece más natural y viable para vos hoy? Ordená de más posible a menos.',
+   items:[
+     {txt:'Hablar con alguien que ya hizo el camino que me imagino.'},
+     {txt:'Investigar y aprender sobre el área que me interesa.'},
+     {txt:'Tener una conversación honesta con mi entorno cercano.'},
+     {txt:'Hacer un proyecto pequeño o piloto en lo que me atrae.'},
+     {txt:'Trabajar con un coach el proceso de reorientación.'},
+     {txt:'Definir una fecha límite para tomar la decisión.'}
+   ]},
+
+  {acto:3,tipo:'CO',heroBold:'La promesa que te hacés',heroThin:'El camino posible',
+   tipoBg:'#d4522a',tipoLabel:'Completar',
+   stem:{pre:'Después de este proceso, lo que me comprometo a hacer en los próximos 30 días es…',em:'',post:''},
+   ph:'Una sola cosa. Concreta y posible. No la más perfecta — la que realmente harías.'}
+
+];
+
+
+// ── STATE ──────────────────────────────────────────────────────────────
+const LS_KEY='tenkai_reovoc_v2';
+let state={name:'',step:0,answers:{}};
+let curRankOrder=[];
+
+function save(){localStorage.setItem(LS_KEY,JSON.stringify(state));}
+function load(){try{const d=localStorage.getItem(LS_KEY);if(d)state={...state,...JSON.parse(d)};}catch(e){}}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  // Scroll instant to very top — requestAnimationFrame ensures DOM is painted first
+  window.scrollTo(0,0);
+  requestAnimationFrame(()=>window.scrollTo(0,0));
+}
+
+// ── INTRO ──────────────────────────────────────────────────────────────
+function startTest(){
+  const n=document.getElementById('nameInput').value.trim();
+  if(!n){toast('Escribí tu nombre para comenzar');return;}
+  state.name=n;state.step=0;state.answers={};
+  save();renderStep(0);showPage('pgTest');
+}
+
+// ── RENDER ─────────────────────────────────────────────────────────────
+function renderStep(idx){
+  const s=STEPS[idx];const total=STEPS.length;
+  const acto=ACTOS[s.acto];
+
+  // Header
+  document.getElementById('progFill').style.width=Math.round(idx/total*100)+'%';
+  document.getElementById('progBarWrap').style.display='';
+  document.getElementById('progTxt').textContent=`Acto ${s.acto+1} · ${idx+1}/${total}`;
+  document.getElementById('testHero').style.background=acto.grad;
+  document.getElementById('testEye').textContent=`Acto ${s.acto+1}: ${acto.label} · ${state.name}`;
+  document.getElementById('testThin').textContent=s.heroThin;
+  document.getElementById('testBold').textContent=s.heroBold;
+
+  // Acto breaker (cuando cambia de acto)
+  const breaker=document.getElementById('actoBreaker');
+  const prevActo=idx>0?STEPS[idx-1].acto:-1;
+  if(s.acto!==prevActo||idx===0){
+    breaker.style.display='';
+    breaker.innerHTML=`<div class="acto-break" style="background:${acto.grad}">
+      <div class="acto-break-num">${acto.num}</div>
+      <span class="acto-break-icon acto-icon">${acto.icon}</span>
+      <div class="acto-break-inner">
+        <div class="acto-kicker">Acto ${s.acto+1} de 4</div>
+        <div class="acto-title">${acto.label}</div>
+        <div class="acto-desc">${acto.desc}</div>
+      </div>
+    </div>`;
+  } else { breaker.style.display='none'; }
+
+  // Tipo pill
+  const bg=s.tipoBg||'#8b3a8f';
+  document.getElementById('tipoPill').innerHTML=`<div class="tipo-pill" style="background:${bg}22;color:${bg};border:1.5px solid ${bg}44">${s.tipoLabel||'Dinámica'}</div>`;
+
+  // Nav
+  document.getElementById('btnPrev').style.display=idx>0?'inline-flex':'none';
+  const nb=document.getElementById('btnNext');
+  nb.innerHTML=idx<total-1?'Continuar <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>':'Ver mi Cartografía <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8l4 4-4 4M8 12h8"/></svg>';
+
+  const c=document.getElementById('stepContent');
+  if(s.tipo==='NR')renderNR(c,s,idx);
+  else if(s.tipo==='TL')renderTL(c,s,idx);
+  else if(s.tipo==='CO')renderCO(c,s,idx);
+  else if(s.tipo==='VM')renderVM(c,s,idx);
+  else if(s.tipo==='DS')renderDS(c,s,idx);
+  else if(s.tipo==='EM')renderEM(c,s,idx);
+  else if(s.tipo==='DL')renderDL(c,s,idx);
+  else if(s.tipo==='MI')renderMI(c,s,idx);
+  else if(s.tipo==='RK')renderRK(c,s,idx);
+}
+
+// NR — Narrativa libre
+function renderNR(c,s,idx){
+  const saved=state.answers[idx]||'';
+  c.innerHTML=`<div class="carta"><div class="carta-stripe" style="background:${s.carta.color}"></div><div class="carta-kicker" style="color:${s.carta.color}">${s.carta.kicker}</div><div class="carta-body">${s.carta.body}</div></div>
+  <span class="lbl">${s.prompt}</span>
+  <textarea class="txt-area" id="nrTxt" placeholder="${s.ph}" rows="5">${saved}</textarea>`;
+}
+function saveNR(idx){const t=document.getElementById('nrTxt')?.value||'';state.answers[idx]=t;save();}
+
+// TL — Timeline energía
+function renderTL(c,s,idx){
+  const saved=state.answers[idx]||{};
+  const ENERGY_LABELS=['Sin energía','Baja','Media','Alta','Máxima'];
+  c.innerHTML=`<div class="carta"><div class="carta-stripe" style="background:${s.carta?.color||'#d4522a'}"></div><div class="carta-kicker" style="color:${s.carta?.color||'#d4522a'}">${s.carta?.kicker||''}</div><div class="carta-body">${s.carta?.body||''}</div></div>
+  <span class="lbl">Cada etapa — tocá los puntos para indicar tu nivel de energía</span>
+  <div style="display:flex;flex-direction:column;gap:0">${s.periodos.map((p,pi)=>`
+    <div class="timeline-row" id="tlrow-${pi}">
+      <div class="timeline-track">
+        <div class="timeline-node" style="background:${s.energyColors[pi]}" onclick="">${pi+1}</div>
+        ${pi<s.periodos.length-1?'<div class="timeline-vline"></div>':''}
+      </div>
+      <div class="timeline-card" id="tlcard-${pi}" style="margin-bottom:${pi<s.periodos.length-1?'0':'0'}">
+        <div class="timeline-card-hdr">
+          <span class="timeline-period">${p}</span>
+          <div class="timeline-energy" id="tlenergy-${pi}">
+            ${[1,2,3,4,5].map(v=>`<div class="energy-dot" style="background:${v<=(saved[pi]||0)?s.energyColors[pi]:'#e2e0ea'}" onclick="setEnergy(${pi},${v},${idx})" title="${ENERGY_LABELS[v-1]}"></div>`).join('')}
+          </div>
+        </div>
+        <input type="text" style="width:100%;padding:8px 12px;font-family:var(--f);font-size:13px;color:var(--ink);background:var(--cream);border:1.5px solid transparent;border-radius:7px;outline:none;transition:all .2s" 
+          placeholder="¿Qué hacías? ¿Cómo te sentías?" 
+          value="${saved['txt_'+pi]||''}"
+          id="tltxt-${pi}"
+          oninput="saveTLTxt(${pi},${idx})"
+          onfocus="this.style.borderColor='${s.energyColors[pi]}'" 
+          onblur="this.style.borderColor='transparent'">
+      </div>
+    </div>`).join('')}
+  </div>`;
+}
+function setEnergy(pi,val,idx){
+  if(!state.answers[idx])state.answers[idx]={};
+  state.answers[idx][pi]=val;save();
+  document.querySelectorAll(`#tlenergy-${pi} .energy-dot`).forEach((d,i)=>{
+    d.style.background=i+1<=val?STEPS[idx].energyColors[pi]:'#e2e0ea';
+  });
+}
+function saveTLTxt(pi,idx){
+  const txt=document.getElementById(`tltxt-${pi}`)?.value||'';
+  if(!state.answers[idx])state.answers[idx]={};
+  state.answers[idx]['txt_'+pi]=txt;save();
+}
+function saveTL(idx){save();}
+
+// CO — Completar
+function renderCO(c,s,idx){
+  const saved=state.answers[idx]||'';
+  c.innerHTML=`<div class="stem-box"><div class="stem-txt">${s.stem.pre}<em>${s.stem.em}</em>${s.stem.post}</div></div>
+  <textarea class="txt-area" id="coTxt" placeholder="${s.ph}" rows="4">${saved}</textarea>`;
+}
+function saveCO(idx){const t=document.getElementById('coTxt')?.value||'';state.answers[idx]=t;save();}
+
+// VM — Mapa vocacional
+function renderVM(c,s,idx){
+  const saved=state.answers[idx]||[];
+  c.innerHTML=`<p style="font-size:15px;line-height:1.75;color:var(--ink);font-weight:500;margin-bottom:18px">${s.pregunta}</p>
+  <div class="vocmap-grid" id="vocGrid">${PERFILES.map(p=>`
+    <div class="vocmap-card ${saved.includes(p.id)?'on':''}" id="voc-${p.id}" onclick="toggleVoc('${p.id}',${idx})" style="${saved.includes(p.id)?'border-color:'+p.color+';background:'+p.light:''}">
+      <span class="vocmap-icon">${p.icon}</span>
+      <div class="vocmap-name">${p.name}</div>
+      <div class="vocmap-desc">${p.desc}</div>
+    </div>`).join('')}
+  </div>
+  <p style="font-size:11.5px;color:var(--muted);text-align:center;font-style:italic">Elegí hasta 2 perfiles</p>`;
+}
+function toggleVoc(id,idx){
+  if(!state.answers[idx])state.answers[idx]=[];
+  const arr=state.answers[idx];const i=arr.indexOf(id);
+  if(i>-1)arr.splice(i,1);
+  else{if(arr.length>=2){toast('Máximo 2 perfiles');return;}arr.push(id);}
+  state.answers[idx]=arr;save();
+  PERFILES.forEach(p=>{
+    const el=document.getElementById(`voc-${p.id}`);if(!el)return;
+    const on=arr.includes(p.id);
+    el.classList.toggle('on',on);
+    el.style.borderColor=on?p.color:'';el.style.background=on?p.light:'';
+  });
+}
+function saveVM(idx){save();}
+
+// DS — Dual Slider
+function renderDS(c,s,idx){
+  const saved=state.answers[idx]??2;
+  const labels=['Totalmente A','Más hacia A','Centro-A','Centro-B','Más hacia B','Totalmente B'];
+  c.innerHTML=`<p style="font-size:15px;line-height:1.75;color:var(--ink);font-weight:500;margin-bottom:20px">${s.pregunta}</p>
+  <div class="dual-slider-wrap">
+    <div class="dual-poles"><span class="dual-pole">${s.poleA}</span><span class="dual-pole" style="text-align:right">${s.poleB}</span></div>
+    <input type="range" class="dual-slider" id="dsSlider" min="0" max="5" step="1" value="${saved}" oninput="updateDsLabel(this.value,${idx})">
+    <div class="dual-val" id="dsLbl">${labels[Math.min(saved,5)]}</div>
+  </div>`;
+}
+function updateDsLabel(val,idx){
+  const labels=['Totalmente A','Más hacia A','Centro-A','Centro-B','Más hacia B','Totalmente B'];
+  const el=document.getElementById('dsLbl');if(el)el.textContent=labels[Math.min(parseInt(val),5)];
+  state.answers[idx]=parseInt(val);save();
+}
+function saveDS(idx){const v=state.answers[idx]??2;save();}
+
+// EM — Termómetro emocional
+function renderEM(c,s,idx){
+  const saved=state.answers[idx]||[];
+  c.innerHTML=`<p style="font-size:15px;line-height:1.75;color:var(--ink);font-weight:500;margin-bottom:18px">${s.pregunta}</p>
+  <div class="termo-grid" id="termoGrid">${s.emos.map((e,i)=>`
+    <div class="termo-item ${saved.includes(i)?'on':''}" onclick="toggleEmo(${i},${idx})" style="${saved.includes(i)?'border-color:var(--p)':''}">
+      <span class="termo-emoji">${e.emoji}</span>
+      <div class="termo-lbl">${e.lbl}</div>
+      <div class="termo-sub">${e.sub}</div>
+    </div>`).join('')}
+  </div>`;
+}
+function toggleEmo(i,idx){
+  if(!state.answers[idx])state.answers[idx]=[];
+  const arr=state.answers[idx];const pos=arr.indexOf(i);
+  if(pos>-1)arr.splice(pos,1);else{if(arr.length>=2){toast('Máximo 2');return;}arr.push(i);}
+  state.answers[idx]=arr;save();
+  const s=STEPS[idx];
+  s.emos.forEach((_,j)=>{const el=document.querySelector(`#termoGrid .termo-item:nth-child(${j+1})`);if(el){const on=arr.includes(j);el.classList.toggle('on',on);el.style.borderColor=on?'var(--p)':'';}});
+}
+function saveEM(idx){save();}
+
+// DL — Dilema múltiple (4 opciones)
+function renderDL(c,s,idx){
+  const saved=state.answers[idx];
+  const opts=[{k:'A',txt:s.opcA},{k:'B',txt:s.opcB},{k:'C',txt:s.opteC},{k:'D',txt:s.opcD}];
+  c.innerHTML=`<p style="font-size:15px;line-height:1.75;color:var(--ink);font-weight:500;margin-bottom:18px">${s.pregunta}</p>
+  <div class="dilema2-grid">${opts.map(o=>`
+    <div class="dilema2-card ${saved===o.k?'on':''}" id="dl${o.k}" onclick="chooseDL('${o.k}',${idx})">
+      <div class="dilema2-tag">Opción ${o.k}</div>
+      <div class="dilema2-txt">${o.txt}</div>
+    </div>`).join('')}
+  </div>
+  <p style="font-size:11.5px;color:var(--muted);text-align:center;font-style:italic">Elegí la que más se acerca a tu situación actual, aunque no sea exacta.</p>`;
+}
+function chooseDL(k,idx){
+  state.answers[idx]=k;save();
+  ['A','B','C','D'].forEach(x=>{document.getElementById('dl'+x)?.classList.toggle('on',x===k);});
+}
+function saveDL(idx){save();}
+
+// MI — Mapa de miedos/recursos
+function renderMI(c,s,idx){
+  const saved=state.answers[idx]||{};
+  c.innerHTML=`<p style="font-size:15px;line-height:1.75;color:var(--ink);font-weight:500;margin-bottom:18px">${s.pregunta}</p>
+  <div class="miedo-grid">${s.miedos.map((m,i)=>`
+    <div class="miedo-item">
+      <div class="miedo-txt">${m}</div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="miedo-scale" id="msc-${i}">${[1,2,3].map(v=>`<div class="mscale-btn ${(saved[i]||0)===v?'on':''}" onclick="setMiedo(${i},${v},${idx})">${v}</div>`).join('')}</div>
+        <div class="miedo-lbrow"><div class="miedo-lbl" style="font-size:8px">Poco</div><div class="miedo-lbl" style="font-size:8px"></div><div class="miedo-lbl" style="font-size:8px">Mucho</div></div>
+      </div>
+    </div>`).join('')}
+  </div>`;
+}
+function setMiedo(i,val,idx){
+  if(!state.answers[idx])state.answers[idx]={};
+  state.answers[idx][i]=val;save();
+  document.querySelectorAll(`#msc-${i} .mscale-btn`).forEach((b,j)=>b.classList.toggle('on',j+1===val));
+}
+function saveMI(idx){save();}
+
+// RK — Ranking
+let curRankIdx=-1;
+// ── RANKING — slots fijos + tarjetas arrastrables ─────────────────────
+let dragSrcIdx=null;
+
+function renderRK(c,s,idx){
+  curRankIdx=idx;
+  const saved=state.answers[idx]||(s.items.map((_,i)=>i));
+  curRankOrder=[...saved];
+  c.innerHTML=`
+  <p style="font-size:14px;line-height:1.75;color:var(--ink);font-weight:500;margin-bottom:6px">${s.instruccion}</p>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:20px;font-style:italic">Arrastrá cada tarjeta al número que le corresponde según tu prioridad. También podés usar las flechas ▲ ▼.</p>
+  <div id="rkSlots" style="display:flex;flex-direction:column;gap:8px">${buildRankHTML(s,curRankOrder)}</div>`;
+}
+
+function buildRankHTML(s,order){
+  return order.map((itemIdx,pos)=>`
+    <div style="display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center">
+      <div style="width:44px;height:44px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0;box-shadow:0 2px 8px rgba(139,58,143,.24)">${pos+1}</div>
+      <div class="rank-item"
+        draggable="true"
+        data-pos="${pos}"
+        ondragstart="onDragStart(event,${pos})"
+        ondragover="onDragOver(event,this)"
+        ondragleave="onDragLeave(this)"
+        ondrop="onDrop(event,${pos})"
+        ondragend="onDragEnd(event)"
+        style="cursor:grab;user-select:none;margin:0;display:flex;align-items:center;gap:10px;padding:13px 16px;background:#fff;border:1.5px solid var(--border);border-radius:10px;transition:all .15s">
+        <div style="font-size:18px;line-height:1;flex-shrink:0">⠿</div>
+        <div class="rank-txt" style="flex:1;font-size:13.5px;line-height:1.5;color:var(--ink)">${s.items[itemIdx].txt}</div>
+        <div style="display:flex;flex-direction:column;gap:2px;flex-shrink:0">
+          <button class="rank-arr" onclick="moveRK(${pos},-1,event)" ${pos===0?'disabled':''} title="Subir" style="font-size:10px;width:22px;height:20px">▲</button>
+          <button class="rank-arr" onclick="moveRK(${pos},1,event)" ${pos===order.length-1?'disabled':''} title="Bajar" style="font-size:10px;width:22px;height:20px">▼</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function onDragStart(e,pos){
+  dragSrcIdx=pos;
+  e.dataTransfer.effectAllowed='move';
+  e.currentTarget.style.opacity='.4';
+  e.currentTarget.style.boxShadow='0 4px 20px rgba(139,58,143,.28)';
+}
+function onDragOver(e,el){
+  e.preventDefault();
+  e.dataTransfer.dropEffect='move';
+  if(el)el.style.borderColor='var(--p)';
+}
+function onDragLeave(el){if(el)el.style.borderColor='';}
+function onDrop(e,targetPos){
+  e.preventDefault();
+  if(e.currentTarget)e.currentTarget.style.borderColor='';
+  if(dragSrcIdx===null||dragSrcIdx===targetPos){dragSrcIdx=null;return;}
+  const tmp=curRankOrder[dragSrcIdx];
+  curRankOrder.splice(dragSrcIdx,1);
+  curRankOrder.splice(targetPos,0,tmp);
+  dragSrcIdx=null;
+  state.answers[curRankIdx]=[...curRankOrder];save();
+  document.getElementById('rkSlots').innerHTML=buildRankHTML(STEPS[curRankIdx],curRankOrder);
+}
+function onDragEnd(e){
+  e.currentTarget.style.opacity='';
+  e.currentTarget.style.boxShadow='';
+  dragSrcIdx=null;
+}
+function moveRK(pos,dir,e){
+  if(e){e.preventDefault();e.stopPropagation();}
+  const np=pos+dir;if(np<0||np>=curRankOrder.length)return;
+  [curRankOrder[pos],curRankOrder[np]]=[curRankOrder[np],curRankOrder[pos]];
+  state.answers[curRankIdx]=[...curRankOrder];save();
+  document.getElementById('rkSlots').innerHTML=buildRankHTML(STEPS[curRankIdx],curRankOrder);
+}
+function saveRK(idx){state.answers[idx]=[...curRankOrder];save();}
+
+// ── NAV ────────────────────────────────────────────────────────────────
+function validateStep(idx){
+  const s=STEPS[idx];
+  const a=state.answers[idx];
+  const MSGS={
+    NR:'Contanos tu historia — escribi al menos una oracion.',
+    CO:'Completa la frase para continuar.',
+    TL:'Marca al menos el nivel de energia del periodo actual.',
+    EM:'Elegí al menos una emocion.',
+    DL:'Elegí una opcion para continuar.',
+    DS:null,// slider siempre tiene valor
+    VM:'Elegí al menos un perfil vocacional.',
+    MI:'Puntua al menos 3 de los items para continuar.',
+    RK:null// ranking siempre tiene orden
+  };
+  if(s.tipo==='NR'){
+    const txt=(document.getElementById('nrTxt')?.value||a||'').trim();
+    if(txt.length<15){toast(MSGS.NR||'Escribi algo para continuar.');return false;}
+  }
+  if(s.tipo==='CO'){
+    const txt=(document.getElementById('coTxt')?.value||a||'').trim();
+    if(txt.length<8){toast(MSGS.CO);return false;}
+  }
+  if(s.tipo==='TL'){
+    const ans=a||{};
+    const hasEnergy=Object.keys(ans).some(k=>!k.startsWith('txt_')&&ans[k]>0);
+    if(!hasEnergy){toast(MSGS.TL);return false;}
+  }
+  if(s.tipo==='EM'){
+    if(!a||a.length===0){toast(MSGS.EM);return false;}
+  }
+  if(s.tipo==='DL'){
+    if(!a){toast(MSGS.DL);return false;}
+  }
+  if(s.tipo==='VM'){
+    if(!a||a.length===0){toast(MSGS.VM);return false;}
+  }
+  if(s.tipo==='MI'){
+    const ans=a||{};
+    if(Object.keys(ans).length<3){toast(MSGS.MI);return false;}
+  }
+  return true;
+}
+
+function nextStep(){
+  const idx=state.step;const s=STEPS[idx];
+  if(!validateStep(idx))return;
+  if(s.tipo==='NR')saveNR(idx);else if(s.tipo==='TL')saveTL(idx);
+  else if(s.tipo==='CO')saveCO(idx);else if(s.tipo==='VM')saveVM(idx);
+  else if(s.tipo==='DS')saveDS(idx);else if(s.tipo==='EM')saveEM(idx);
+  else if(s.tipo==='DL')saveDL(idx);else if(s.tipo==='MI')saveMI(idx);
+  else if(s.tipo==='RK')saveRK(idx);
+  if(idx<STEPS.length-1){state.step++;save();renderStep(state.step);}
+  else{renderResult();showPage('pgResult');}
+}
+function prevStep(){if(state.step>0){state.step--;save();renderStep(state.step);}}
+
+// ── RESULTADO ──────────────────────────────────────────────────────────
+// ── MOTOR DE TENSIONES ────────────────────────────────────────────────
+function renderResult(){
+  const n=state.name;const fn=n.split(' ')[0];
+  document.getElementById('resHeroName').textContent=n;
+  document.getElementById('resCloseTitle').textContent=`Tu Cartografía está lista, ${fn}`;
+
+  const tensiones=detectarTensiones();
+  document.getElementById('resCartografia').innerHTML=renderTensiones(tensiones,fn);
+  document.getElementById('resPasos').innerHTML=renderPasos(tensiones);
+  // Ocultar radar - no aplica al nuevo modelo
+  const rw=document.getElementById('resRadar')?.closest('.res-radar-wrap');if(rw)rw.style.display='none';
+  const rl=document.querySelector('.lbl');if(rl&&rl.textContent==='Tu perfil vocacional dominante')rl.style.display='none';
+}
+
+function detectarTensiones(){
+  const a=state.answers;
+  const tensiones=[];
+
+  // ─── T1: SEGURIDAD VS. AUTENTICIDAD ──────────────────────────────────
+  // Señal: alto agotamiento (paso 9 slider ≤2) + miedo económico alto (paso 10[0]≥3)
+  const agotamiento=a[9]??3;
+  const miedoEconomico=(a[10]||{})[0]||0;
+  const coherencia=a[5]??3;
+  if(agotamiento<=2&&miedoEconomico>=3){
+    tensiones.push({
+      id:'seguridad',
+      color:'#d4522a',light:'#fbeaf0',
+      icono:'⚖️',
+      nombre:'Seguridad vs. Autenticidad',
+      descripcion:'Estás sosteniendo una situación que ya no te da vida por el miedo real y legítimo a perder la estabilidad económica. No es cobardía — es una tensión concreta que necesita una estrategia, no solo una decisión.',
+      pregunta_coaching:'¿Qué tendría que ser verdad en tu situación económica para que la seguridad deje de ser el argumento que paraliza el movimiento?',
+      senal:'Detección: alto agotamiento + miedo económico dominante'
+    });
+  }
+
+  // ─── T2: IDENTIDAD HEREDADA VS. IDENTIDAD DESEADA ────────────────────
+  // Señal: perfil pasado (paso 4) ≠ perfil futuro (paso 15)
+  const perfilPasado=a[4]||[];
+  const perfilFuturo=a[15]||[];
+  const hayBrechaIdentidad=perfilPasado.length>0&&perfilFuturo.length>0&&
+    !perfilPasado.some(p=>perfilFuturo.includes(p));
+  if(hayBrechaIdentidad){
+    tensiones.push({
+      id:'identidad',
+      color:'#8b3a8f',light:'#f1ecf8',
+      icono:'🪞',
+      nombre:'Identidad heredada vs. Identidad deseada',
+      descripcion:'La persona que fuiste laboralmente y la persona que querés ser apuntan en direcciones distintas. Eso no es una crisis — es el síntoma más claro de que estás en un momento genuino de transición de identidad profesional.',
+      pregunta_coaching:'¿Qué parte de tu identidad laboral actual es realmente tuya — y cuál construiste para responder a lo que otros esperaban de vos?',
+      senal:'Detección: perfil vocacional pasado y futuro no coinciden'
+    });
+  }
+
+  // ─── T3: URGENCIA VS. PARÁLISIS ──────────────────────────────────────
+  // Señal: urgencia alta (paso 24 slider ≤2) + recursos bajos (paso 23 promedio ≤1.5)
+  const urgencia=a[24]??3;
+  const recursos=a[23]||{};
+  const promedioRecursos=Object.values(recursos).length>0
+    ?Object.values(recursos).reduce((s,v)=>s+v,0)/Object.values(recursos).length:2;
+  if(urgencia<=2&&promedioRecursos<=1.8){
+    tensiones.push({
+      id:'urgencia',
+      color:'#3b35a8',light:'#e7ebf9',
+      icono:'⏱️',
+      nombre:'Urgencia interna vs. Recursos disponibles',
+      descripcion:'Sentís que el tiempo pasa y la ventana se cierra, pero los recursos concretos para hacer el movimiento son escasos. Esa brecha entre la urgencia que sentís y lo que tenés disponible genera una presión que, si no se gestiona, puede llevar a decisiones apresuradas o a la parálisis total.',
+      pregunta_coaching:'¿Qué recurso mínimo necesitarías para poder moverte sin que la urgencia tome la decisión por vos?',
+      senal:'Detección: alta urgencia percibida + bajo capital de transición'
+    });
+  }
+
+  // ─── T4: MOVIMIENTO DECLARADO VS. DISPOSICIÓN REAL ───────────────────
+  // Señal: quiere corte radical (paso 21 = D) pero primer paso elegido es pasivo (paso 26 primeros ítems = 4 o 5)
+  const tipoCambio=a[21];
+  const primerPaso=(a[26]||[0,1,2,3,4,5])[0];
+  if(tipoCambio==='D'&&primerPaso>=3){
+    tensiones.push({
+      id:'disposicion',
+      color:'#ba7517',light:'#faeeda',
+      icono:'🚀',
+      nombre:'Cambio radical declarado vs. Acción gradual real',
+      descripcion:'Imaginás un corte claro y profundo, pero cuando se trata de elegir el primer paso, tu movimiento natural es más cauteloso. No es contradicción — es el realismo de quien sabe que los grandes cambios se hacen con pasos pequeños. Pero hay que nombrarlo.',
+      pregunta_coaching:'¿El "corte radical" que imaginás es un destino al que llegarás con pasos chicos, o es una fantasía que te protege de tomar el primer paso real?',
+      senal:'Detección: deseo de cambio radical + acción inicial conservadora'
+    });
+  }
+
+  // ─── T5: CLARIDAD DEL DESEO VS. ESPECIFICIDAD DEL CAMINO ─────────────
+  // Señal: respuesta de vida ideal detallada pero hipótesis (paso 25) vaga o corta
+  const vidaIdeal=a[14]||'';
+  const hipotesis=a[25]||'';
+  const hayDeseoClaro=vidaIdeal.length>80;
+  const hayHipotesisVaga=hipotesis.length<60;
+  if(hayDeseoClaro&&hayHipotesisVaga){
+    tensiones.push({
+      id:'claridad',
+      color:'#d4522a',light:'#e4f4f8',
+      icono:'🧭',
+      nombre:'Deseo vívido vs. Camino aún difuso',
+      descripcion:'Podés describir con detalle cómo querés que sea tu vida — eso es una brújula poderosa. Pero cuando se trata de nombrar la hipótesis concreta de cómo llegar, la imagen se vuelve borrosa. La brecha entre el destino claro y el camino difuso es exactamente el trabajo de un proceso de reorientación.',
+      pregunta_coaching:'Si el destino que describís ya existiera, ¿qué tendría que pasar en los próximos 90 días para que te acercaras un paso?',
+      senal:'Detección: vida ideal detallada + hipótesis de transición vaga'
+    });
+  }
+
+  // ─── T6: RETENCIÓN POR IDENTIDAD VS. INSATISFACCIÓN PROFUNDA ─────────
+  // Señal: "la identidad" rankeada alta en retención (paso 13) + emoción negativa en paso 7
+  const retencionOrder=a[13]||[0,1,2,3,4,5];
+  const identidadRank=retencionOrder.indexOf(5);// ítem 5 = identidad
+  const emosLunes=a[7]||[];
+  const emosNegativas=[0,1,2,3,6];// anestesiado, frustrado, ansioso, agotado, confundido
+  const hayEmoNegativa=emosLunes.some(e=>emosNegativas.includes(e));
+  if(identidadRank<=2&&hayEmoNegativa){
+    tensiones.push({
+      id:'rol',
+      color:'#a0306e',light:'#fbeaf0',
+      icono:'🎭',
+      nombre:'Rol profesional vs. Identidad propia',
+      descripcion:'Una parte importante de lo que te retiene es que tu trabajo define quién sos ante los demás — y ante vos mismo/a. Al mismo tiempo, las emociones que describe el inicio de tu semana laboral dicen algo diferente. Cuando el rol te sostiene pero no te da vida, la pregunta central es: ¿quién serías sin ese título?',
+      pregunta_coaching:'Si perdieras el cargo o el trabajo mañana, ¿qué parte de vos seguiría siendo la misma? ¿Esa parte tiene espacio en lo que hacés hoy?',
+      senal:'Detección: identidad como ancla de permanencia + estado emocional negativo'
+    });
+  }
+
+  // ─── T7: CONSEJO LÚCIDO QUE NO TE APLICÁS ────────────────────────────
+  // Señal: siempre está presente — lo que le diría a un amigo (paso 20) vs. lo que hace
+  const consejo=a[20]||'';
+  if(consejo.length>50){
+    tensiones.push({
+      id:'consejo',
+      color:'#0f6e56',light:'#e1f5ee',
+      icono:'💡',
+      nombre:'Lucidez para otros vs. Permiso para uno mismo',
+      descripcion:'Cuando describiste el consejo que le darías a un amigo en tu misma situación, mostraste una claridad notable. El trabajo real de reorientación no es encontrar más información — es darte el mismo permiso que le darías a alguien que querés.',
+      pregunta_coaching:'¿Qué necesitarías creer sobre vos mismo/a para seguir el consejo que le darías a esa persona cercana?',
+      senal:'Detección: respuesta de consejo con lucidez significativa'
+    });
+  }
+
+  // Si no se detectaron suficientes, agregar tensión universal
+  if(tensiones.length===0){
+    tensiones.push({
+      id:'inicio',color:'#8b3a8f',light:'#f1ecf8',icono:'🌱',
+      nombre:'El inicio del proceso',
+      descripcion:'Completar este diagnóstico con honestidad ya es un movimiento. Las tensiones más profundas suelen emerger en las conversaciones de coaching, no en los formularios.',
+      pregunta_coaching:'¿Qué es lo que más te cuesta nombrar en voz alta sobre tu situación laboral actual?',
+      senal:''
+    });
+  }
+
+  return tensiones.slice(0,5);// máximo 5 tensiones
+}
+
+function renderTensiones(tensiones,fn){
+  const miedoLabels=['Perder estabilidad','No saber que hacer','Opinion de otros','Que sea tarde','Falta de habilidades','Decepcionar a otros','Que no funcione','Perder lo construido'];
+  const topMiedos=Object.entries(state.answers[10]||{}).filter(([,v])=>parseInt(v)>=3).map(([k])=>miedoLabels[parseInt(k)]).slice(0,3);
+  const dlCamino=state.answers[21];
+  const caminoMap={A:'un giro dentro de tu campo actual',B:'un salto hacia un sector nuevo',C:'construir algo paralelo mientras seguis',D:'un corte claro hacia algo propio'};
+
+  return '<div class="res-cartografia">'
+    +'<div class="res-cart-hdr">'
+    +'<div class="res-cart-icon" style="background:linear-gradient(135deg,#8b3a8f,#3b35a8);font-size:20px">🗺️</div>'
+    +'<div><div class="res-cart-title">Las tensiones activas de '+fn+'</div>'
+    +'<div class="res-cart-sub">Lo que este diagnostico detecto en tus respuestas — para trabajar con Esteban</div></div>'
+    +'</div>'
+    +'<div style="background:rgba(107,63,160,.04);border-left:3px solid var(--p);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:20px;font-size:13px;color:var(--muted);line-height:1.7">'
+    +'Una tension no es un problema a resolver — es una <strong style="color:var(--ink)">pregunta a sostener</strong>. El resultado de este diagnostico no te dice que hacer: te dice donde mirar.'
+    +'</div>'
+    +tensiones.map(function(t,i){
+      return '<div class="res-zone" style="padding:18px 0;'+(i<tensiones.length-1?'border-bottom:1px solid var(--border)':'border-bottom:none')+'">'
+        +'<div class="res-zone-hdr" style="margin-bottom:10px">'
+        +'<div style="width:32px;height:32px;border-radius:8px;background:'+t.light+';display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-right:3px">'+t.icono+'</div>'
+        +'<span class="res-zone-name" style="color:'+t.color+';font-size:11px;font-weight:800;letter-spacing:1.5px">'+t.nombre+'</span>'
+        +'</div>'
+        +'<div class="res-zone-txt" style="margin-bottom:12px">'+t.descripcion+'</div>'
+        +'<div style="background:'+t.light+';border:1px solid '+t.color+'33;border-left:3px solid '+t.color+';border-radius:0 8px 8px 0;padding:11px 14px">'
+        +'<div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:'+t.color+';margin-bottom:5px">Pregunta para tu sesion con Esteban</div>'
+        +'<div style="font-size:13px;color:var(--ink);line-height:1.7;font-style:italic">'+t.pregunta_coaching+'</div>'
+        +'</div></div>';
+    }).join('')
+    +(topMiedos.length
+      ?'<div class="res-zone" style="padding-top:18px;border-top:1px solid var(--border)">'
+        +'<div class="res-zone-hdr"><div class="res-zone-dot" style="background:#ba7517"></div><span class="res-zone-name">Miedos con mayor peso detectado</span></div>'
+        +'<div class="res-zone-txt">Las senales mas fuertes en tu mapa de frenos: <strong>'+topMiedos.join(', ')+'</strong>. Nombrarlos en voz alta — con alguien de confianza — es mas valioso que cualquier analisis individual.</div>'
+        +'</div>'
+      :'')
+    +(dlCamino
+      ?'<div class="res-zone" style="padding-top:18px;border-top:1px solid var(--border)">'
+        +'<div class="res-zone-hdr"><div class="res-zone-dot" style="background:#d4522a"></div><span class="res-zone-name">Tu orientacion de movimiento</span></div>'
+        +'<div class="res-zone-txt">Cuando elegiste el tipo de movimiento, senalaste hacia <strong>'+(caminoMap[dlCamino]||'aun por definir')+'</strong>. Eso no es una decision — es una hipotesis de trabajo. El proceso de coaching va a ayudarte a validarla o ajustarla.</div>'
+        +'</div>'
+      :(''
+      ))
+    // ── TUS PROPIAS PALABRAS ─────────────────────────────────────────
+    +(function(){
+      const a=state.answers;
+      const bloques=[];
+      // Momento más vivo (paso 2)
+      const vivo=(a[2]||'').trim();
+      if(vivo.length>20)bloques.push({label:'El momento en que te sentiste más vivo/a',txt:vivo,color:'#d4522a'});
+      // Lo que no decís (paso 11)
+      const noDecis=(a[11]||'').trim();
+      if(noDecis.length>20)bloques.push({label:'Lo que no te animabas a decirle a nadie',txt:noDecis,color:'#a0306e'});
+      // Vida ideal (paso 14)
+      const vidaIdeal=(a[14]||'').trim();
+      if(vidaIdeal.length>20)bloques.push({label:'Tu vida laboral ideal en 3 años',txt:vidaIdeal,color:'#ba7517'});
+      // El consejo (paso 20)
+      const consejo=(a[20]||'').trim();
+      if(consejo.length>20)bloques.push({label:'El consejo que le darías a un amigo en tu lugar',txt:consejo,color:'#0f6e56'});
+      // Hipótesis (paso 25)
+      const hipotesis=(a[25]||'').trim();
+      if(hipotesis.length>20)bloques.push({label:'Tu hipótesis sobre el próximo capítulo',txt:hipotesis,color:'#d4522a'});
+      // Compromiso (paso 27)
+      const compromiso=(a[27]||'').trim();
+      if(compromiso.length>10)bloques.push({label:'Lo que te comprometiste a hacer en 30 días',txt:compromiso,color:'#8b3a8f'});
+
+      if(!bloques.length)return '';
+      return '<div style="margin-top:24px;padding-top:24px;border-top:2px solid var(--border)">'
+        +'<div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Lo que escribiste — en tus propias palabras</div>'
+        +'<p style="font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:18px">Estas son tus respuestas textuales. No son interpretaciones — son el material bruto del proceso. Llevalas a la sesion con Esteban como punto de partida.</p>'
+        +bloques.map(function(b){
+          const preview=b.txt.length>220?b.txt.substring(0,220)+'…':b.txt;
+          return '<div style="margin-bottom:14px;padding:14px 18px;background:#fff;border:1.5px solid var(--border);border-left:3px solid '+b.color+';border-radius:0 10px 10px 0">'
+            +'<div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:'+b.color+';margin-bottom:6px">'+b.label+'</div>'
+            +'<div style="font-size:13px;color:var(--ink);line-height:1.7;font-style:italic">'+preview+'</div>'
+            +'</div>';
+        }).join('')
+        +'</div>';
+    }())
+    +'</div>';
+}
+
+function renderPasos(tensiones){
+  const compromiso=state.answers[27]||'';
+  const pasos=[
+    {title:'Lleva esta Cartografia a tu sesion con Esteban',
+     desc:'Este documento es el punto de partida del proceso de coaching. No es un diagnostico cerrado — es una lente de entrada. Compartilo antes de la sesion para que Esteban pueda preparar las preguntas mas poderosas para vos.'},
+    {title:'Elegi la tension que mas te resuena',
+     desc:'De las tensiones detectadas, hay una que probablemente sentiste mas en el cuerpo al leerla. Esa es la que mas informacion tiene. Escribi en una hoja que se te viene al leerla — sin editar.'},
+    {title:'No busques certeza — busca claridad',
+     desc:'El objetivo de la reorientacion no es saber exactamente a donde vas. Es tener suficiente claridad para dar el primer paso sin esperar tenerlo todo resuelto. La certeza llega despues del movimiento, no antes.'},
+    {title:compromiso?'Tu compromiso declarado':'Anota un compromiso de 30 dias',
+     desc:compromiso?'Ya lo escribiste: "'+compromiso.substring(0,80)+'...". Ahora compartilo con alguien que te lo pueda preguntar en 30 dias.':'Elegi una sola accion concreta y posible para los proximos 30 dias. No la mas importante — la que realmente harias.'}
+  ];
+  return pasos.map(function(p,i){return '<div class="res-paso"><div class="res-paso-num">'+(i+1)+'</div><div><div class="res-paso-title">'+p.title+'</div><div class="res-paso-desc">'+p.desc+'</div></div></div>';}).join('');
+}
+
+function sendEmail(){
+  const tensiones=detectarTensiones();
+  const lines=[
+    `REORIENTACIÓN VOCACIONAL — ${state.name.toUpperCase()}`,'',
+    `TENSIONES DETECTADAS:`,
+    ...tensiones.map((t,i)=>`${i+1}. ${t.nombre}`),'',
+    `PREGUNTA PARA SESIÓN DE COACHING:`,
+    ...tensiones.slice(0,2).map(t=>`• ${t.pregunta_coaching}`),'',
+    `Llevar a sesión con Esteban para análisis cualitativo.`
+  ];
+  window.location.href=`mailto:esteban@tenkai.com.ar?subject=${encodeURIComponent('Reorientación Vocacional — '+state.name)}&body=${encodeURIComponent(lines.join('\n'))}`;
+}
+
+function restartTest(){
+  state={name:'',step:0,answers:{}};
+  localStorage.removeItem(LS_KEY);
+  document.getElementById('nameInput').value='';
+  showPage('pgIntro');
+  document.getElementById('progBarWrap').style.display='none';
+}
+
+// INIT
+load();
+if(state.name)document.getElementById('nameInput').value=state.name;
+</script>
+</body>
+</html>
+
+
